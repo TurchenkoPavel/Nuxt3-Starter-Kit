@@ -26,3 +26,5 @@ logs
 
 server/api/upwork
 pages/upwork.vue
+
+database.db

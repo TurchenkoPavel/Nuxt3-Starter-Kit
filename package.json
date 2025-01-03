@@ -1,0 +1,45 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
+  },
+  "dependencies": {
+    "@nuxtjs/tailwindcss": "^6.12.2",
+    "@pinia/nuxt": "^0.9.0",
+    "@primevue/forms": "^4.2.5",
+    "@primevue/themes": "^4.2.5",
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^11.7.0",
+    "jsonwebtoken": "^9.0.2",
+    "nuxt": "^3.14.1592",
+    "pinia": "^2.3.0",
+    "primeicons": "^7.0.0",
+    "primevue": "^4.2.5",
+    "sass": "^1.83.0",
+    "sqlite3": "^5.1.7",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.3"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.25.9",
+    "@nuxt/eslint-config": "^0.7.4",
+    "@primevue/nuxt-module": "^4.2.5",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.17.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-define-config": "^2.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-vue": "^9.32.0",
+    "postcss": "^8.4.49",
+    "prettier": "^3.4.2",
+    "tailwindcss": "^3.4.17"
+  }
+}

@@ -26,5 +26,6 @@ logs
 
 server/api/upwork
 pages/upwork.vue
+public/images/avatars/*
 
 database.db

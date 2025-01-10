@@ -42,7 +42,7 @@ export default defineNuxtConfig({
     },
     components: {
       include: ['Button', 'Form', 'InputText', 'Message', 'Toast', 'Card', 'Drawer', 'DataTable', 'Column', 'Password',
-        'Select', 'ConfirmPopup'
+        'Select', 'ConfirmPopup', 'FileUpload', 'Dialog'
       ]
     }
   },

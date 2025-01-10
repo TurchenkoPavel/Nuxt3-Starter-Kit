@@ -3,7 +3,4 @@
 </template>
 
 <script setup>
-definePageMeta({
-  middleware: 'superadmin',
-});
 </script>

@@ -48,8 +48,8 @@
           <div class="mt-auto">
               <hr class="mb-4 mx-4 border-t border-0 border-surface-200 dark:border-surface-700" />
               <NuxtLink to="/profile" class="m-4 flex items-center cursor-pointer p-4 gap-2 rounded text-surface-700 hover:bg-surface-100 dark:text-surface-0 dark:hover:bg-surface-800 duration-150 transition-colors p-ripple" external>
-                  <Avatar image="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png" shape="circle" />
-                  <span class="font-bold">Pavel Turchenko</span>
+                <Avatar :image="avatarUrl" shape="circle" />
+                <span class="font-bold text-black">{{ usersStore.me?.firstName}} {{ usersStore.me?.lastName}}</span>
               </NuxtLink>
           </div>
         </div>
@@ -59,20 +59,28 @@
 
 <script setup>
 import { useUsersStore } from '~/stores/users'
-    const usersStore = useUsersStore();
-    const visible = useState('isSidebarVisible', () => false);
-    const menuItems = {
-        user: [
-            { label: 'Dashboard', path: '/dashboard', icon: 'pi pi-home' },
-        ],
-        admin: [
-            { label: 'Dashboard', path: '/admin/dashboard', icon: 'pi pi-home' },
-            { label: 'User Management', path: '/admin/users', icon: 'pi pi-users' },
-        ],
-        superadmin: [
-            { label: 'Dashboard', path: '/superadmin/dashboard', icon: 'pi pi-home' },
-            { label: 'User Management', path: '/superadmin/users', icon: 'pi pi-users' },
-        ],
-    };
-    const myMenuItems = menuItems[usersStore.me?.role] || []
+
+import { useAvatar } from '@/composables/useAvatar';
+
+const { avatarUrl, loadAvatar } = useAvatar();
+const usersStore = useUsersStore();
+
+loadAvatar(usersStore.me?.avatar);
+
+const visible = useState('isSidebarVisible', () => false);
+
+const menuItems = {
+    user: [
+        { label: 'Dashboard', path: '/dashboard', icon: 'pi pi-home' },
+    ],
+    admin: [
+        { label: 'Dashboard', path: '/admin/dashboard', icon: 'pi pi-home' },
+        { label: 'User Management', path: '/admin/users', icon: 'pi pi-users' },
+    ],
+    superadmin: [
+        { label: 'Dashboard', path: '/superadmin/dashboard', icon: 'pi pi-home' },
+        { label: 'User Management', path: '/superadmin/users', icon: 'pi pi-users' },
+    ],
+};
+const myMenuItems = menuItems[usersStore.me?.role] || []
 </script>

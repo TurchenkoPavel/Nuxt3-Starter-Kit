@@ -13,19 +13,14 @@ export default defineEventHandler((event) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     // Получаем информацию о пользователе из базы данных
-    const user = db.prepare(`SELECT id, email, role, created_at FROM users WHERE id = ?`).get(decoded.id);
+    const user = db.prepare(`SELECT * FROM users WHERE id = ?`).get(decoded.id);
 
     if (!user) {
       throw createError({ statusCode: 404, message: 'User not found' });
     }
 
     // Возвращаем данные пользователя
-    return {
-      id: user.id,
-      email: user.email,
-      role: user.role,
-      createdAt: user.created_at,
-    };
+    return user;
   } catch (error) {
     console.error('Error in getMe:', error);
     if (error.statusCode) {

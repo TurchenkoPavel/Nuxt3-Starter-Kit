@@ -97,7 +97,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { useToast } from 'primevue/usetoast';
 import { useUsersStore } from '~/stores/users';
 import { useRoute, useRouter } from 'vue-router';

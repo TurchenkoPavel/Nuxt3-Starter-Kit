@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-between items-center p-4 text-white bg-white shadow-md fixed w-full top-0">
+  <div class="flex justify-between items-center p-4 text-white bg-white shadow-md fixed w-full z-30	 top-0">
     <div v-if="isLoggedIn" >
       <Button severity="contrast" icon="pi pi-bars" @click="isSidebarVisible = !isSidebarVisible" />
       
@@ -8,10 +8,38 @@
       <!-- <img src="/logo.png" alt="Logo" class="logo" /> -->
        <NuxtLink :to="'/'" class="font-bold text-black" external>LOGO</NuxtLink>
     </div>
-    <div class="flex gap-3">
-      <Button v-if="!isLoggedIn" label="Login" severity="secondary" icon="pi pi-sign-in"  @click="login" />
-      <Button v-else label="Logout" severity="secondary" icon="pi pi-sign-out"  @click="logout" />
+    <div class="flex flex-wrap place-content-center gap-3">
+    <NuxtLink 
+      v-if="isLoggedIn" 
+      to="/profile" 
+      class="h-auto flex items-center cursor-pointer px-4 gap-2 rounded text-surface-700 hover:bg-surface-100 dark:text-surface-0 dark:hover:bg-surface-800 duration-150 transition-colors p-ripple" 
+      external
+    >
+      <Avatar :image="avatarUrl" shape="circle" />
+        <span class="font-bold text-black">{{ usersStore.me?.firstName }} {{ usersStore.me?.lastName }}</span>
+      </NuxtLink>
+      
+      <!-- Login Button -->
+      <Button 
+        v-if="!isLoggedIn" 
+        label="Login" 
+        severity="contrast" 
+        icon="pi pi-sign-in" 
+        class="my-auto h-auto" 
+        @click="login" 
+      />
+      
+      <!-- Logout Button -->
+      <Button 
+        v-else 
+        label="Logout" 
+        severity="contrast" 
+        icon="pi pi-sign-out" 
+        class="my-auto h-auto" 
+        @click="logout" 
+      />
     </div>
+
   </div>
 </template>
   
@@ -19,11 +47,15 @@
 import { useRouter } from 'vue-router';
 import { useUsersStore } from '~/stores/users';
 import { useToast } from 'primevue/usetoast';
+import { useAvatar } from '@/composables/useAvatar';
+
+const { avatarUrl, loadAvatar } = useAvatar();
 
 const toast = useToast();
 const router = useRouter();
 const isLoggedIn = ref(false)
 const usersStore = useUsersStore(); // Initialize the store
+loadAvatar(usersStore.me?.avatar);
 
 const isSidebarVisible = useState('isSidebarVisible', () => false);
 

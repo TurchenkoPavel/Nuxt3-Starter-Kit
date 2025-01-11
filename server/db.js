@@ -1,22 +1,43 @@
 import Database from 'better-sqlite3';
 import bcrypt from 'bcryptjs';
+import fs from 'fs';
+import path from 'path';
 
-const db = new Database('database.db', { verbose: console.log });
+
+// Resolve __dirname for ES modules
+
+const rootDir = process.cwd();
+
+const db = new Database('database.db', { verbose: console.log });  
 const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS);
 
 db.exec(`
-  CREATE TABLE IF NOT EXISTS users (
+  CREATE TABLE IF NOT EXISTS migrations (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    email TEXT NOT NULL UNIQUE,
-    password TEXT NOT NULL,
-    role TEXT NOT NULL, 
-    firstName TEXT NOT NULL,
-    lastName TEXT NOT NULL,
-    avatar TEXT NULLABLE,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    name TEXT NOT NULL UNIQUE,
+    run_at DATETIME DEFAULT CURRENT_TIMESTAMP
   )
 `);
+
+// Apply migrations
+const runMigrations = async () => {
+  const migrationsDir = path.join(rootDir, 'server/migrations');
+  const appliedMigrations = db.prepare(`SELECT name FROM migrations`).all().map(row => row.name);
+
+  const files = fs.readdirSync(migrationsDir)
+    .filter(file => file.endsWith('.js'))
+    .filter(file => !appliedMigrations.includes(file));
+
+  for (const file of files) {
+    const migrationPath = path.join(migrationsDir, file);
+    const migration = await import(migrationPath); // Use dynamic import for ES modules
+    db.transaction(() => { 
+      migration.up(db); // Run the migration
+      db.prepare(`INSERT INTO migrations (name) VALUES (?)`).run(file); // Record the migration
+    })();
+    console.log(`Migration applied: ${file}`);
+  }
+};
 
 // Проверка и создание суперадмина
 const checkAndCreateSuperAdmin = async () => {
@@ -41,5 +62,7 @@ const checkAndCreateSuperAdmin = async () => {
 };
 
 // Вызываем функцию проверки
+runMigrations();
 checkAndCreateSuperAdmin();
+
 export default db;

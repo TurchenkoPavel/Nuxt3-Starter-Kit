@@ -13,7 +13,7 @@ export default defineEventHandler((event) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     // Получаем информацию о пользователе из базы данных
-    const user = db.prepare(`SELECT * FROM users WHERE id = ?`).get(decoded.id);
+    const user = db.prepare(`SELECT * FROM users WHERE id = ? AND isActive = 1`).get(decoded.id);
 
     if (!user) {
       throw createError({ statusCode: 404, message: 'User not found' });

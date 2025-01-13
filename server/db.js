@@ -51,9 +51,9 @@ const checkAndCreateSuperAdmin = async () => {
   if (!user) {
     const hashedPassword = await bcrypt.hash(superAdminPassword, saltRounds);
     db.prepare(`
-      INSERT INTO users (email, password, firstName, lastName, role)
+      INSERT INTO users (email, password, firstName, lastName, role, isActive)
       VALUES (?, ?, ?, ?, ?)
-    `).run(superAdminEmail, hashedPassword, superAdminFirstName, superAdminLastName, 'superadmin');
+    `).run(superAdminEmail, hashedPassword, superAdminFirstName, superAdminLastName, 'superadmin', 1);
 
     console.log(`Superadmin created with email: ${superAdminEmail}`);
   } else {

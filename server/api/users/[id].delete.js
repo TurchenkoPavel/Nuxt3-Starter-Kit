@@ -5,7 +5,11 @@ export default defineEventHandler(async (event) => {
   const userId = event.context.params.id; // Extract the user ID from the URL
 
   try {
-    const result = db.prepare(`DELETE FROM users WHERE id = ?`).run(userId);
+    const result = db.prepare(`
+      UPDATE users
+      SET isActive = 0, updated_at = CURRENT_TIMESTAMP
+      WHERE id = ?
+    `).run(userId);
 
     if (result.changes === 0) {
       throw createError({

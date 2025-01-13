@@ -87,7 +87,7 @@
             </Message>
           </div>
           <div class="grid grid-flow-col gap-2 w-full justify-stretch">
-            <Button class="mt-2" severity="danger" label="Cancel" icon="pi pi-check" @click="router.go(-1)" />
+            <Button class="mt-2" severity="danger" label="Cancel" icon="pi pi-times" @click="router.go(-1)" />
             <Button class="mt-2" type="submit" severity="success" label="Update User" icon="pi pi-check" />
           </div>
         </Form>

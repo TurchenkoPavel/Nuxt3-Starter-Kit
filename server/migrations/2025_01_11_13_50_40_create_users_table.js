@@ -13,3 +13,9 @@ export const up = (db) => {
     )
   `);
 };
+
+export const down = (db) => {
+  // Add your rollback logic here
+  db.exec(`DROP TABLE users;`);
+};
+

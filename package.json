@@ -9,7 +9,12 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix ."
+    "lint:fix": "eslint --fix .",
+    "db:migrate": "node scripts/migrate.js",
+    "db:reset": "node scripts/reset.js",
+    "db:revert": "node scripts/revert.js --step",
+    "db:create": "node scripts/create.js --name",
+    "db:seeds": "node scripts/seeds.js "
   },
   "dependencies": {
     "@nuxtjs/tailwindcss": "^6.12.2",

@@ -1,5 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import Lara from '@primevue/themes/lara';
+import type { NuxtPage } from 'nuxt/schema'
+
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
@@ -16,10 +18,6 @@ export default defineNuxtConfig({
     },
   },
   runtimeConfig: {
-    // upworkApiUrl: process.env.UPWORK_API_URL,
-    // upworkCallbackUrl: process.env.UPWORK_CALLBACK_URL,
-    // upworkClientId: process.env.UPWORK_CLIENT_ID,
-    // upworkClientSecret: process.env.UPWORK_CLIENT_SECRET,
     jwtSecret: process.env.JWT_SECRET,
     bcryptSaltRounds: process.env.BCRYPT_SALT_ROUNDS,
     superAdminEmail: process.env.SUPERADMIN_EMAIL,
@@ -65,4 +63,22 @@ export default defineNuxtConfig({
       },
     },
   },
+  hooks: {
+    'pages:extend' (pages) {
+      function setMiddleware (pages: NuxtPage[]) {
+        for (const page of pages) {
+          console.log(page.path)
+          if (page.path?.startsWith('/admin/')) {
+            page.meta ||= {};
+            page.meta.middleware = [...(page.meta.middleware || []), 'admin'];
+          }
+          if (page.path?.startsWith('/superadmin/')) {
+            page.meta ||= {};
+            page.meta.middleware = [...(page.meta.middleware || []), 'superadmin'];
+          }
+        }
+      }
+      setMiddleware(pages)
+    }
+  }
 })

@@ -67,7 +67,6 @@ export default defineNuxtConfig({
     'pages:extend' (pages) {
       function setMiddleware (pages: NuxtPage[]) {
         for (const page of pages) {
-          console.log(page.path)
           if (page.path?.startsWith('/admin/')) {
             page.meta ||= {};
             page.meta.middleware = [...(page.meta.middleware || []), 'admin'];

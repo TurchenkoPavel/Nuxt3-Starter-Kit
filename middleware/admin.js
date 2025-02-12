@@ -6,7 +6,6 @@ export default defineNuxtRouteMiddleware(async (to) => {
     await usersStore.fetchUserData();
   }
 
-  console.log(usersStore.me?.role)
   // Проверяем роль superadmin
   if (usersStore.me?.role !== 'admin') {
     return navigateTo('/');

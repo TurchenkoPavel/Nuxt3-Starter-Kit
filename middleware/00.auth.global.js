@@ -8,7 +8,6 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
       return;
     }
   } 
-
   try {
     const { authorized } = await $fetch('/api/auth/check');
     if (authorized) {

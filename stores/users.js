@@ -5,10 +5,18 @@ export const useUsersStore = defineStore('users', {
     me: null,
     users: [],
   }),
+  getters: {
+    usersCount: (state) => state.users.filter((user) => user.role === 'user').length,
+    adminUsersCount: (state) => state.users.filter((user) => user.role === 'admin').length,
+    superadminUsersCount: (state) => state.users.filter((user) => user.role === 'superadmin').length,
+  },
   actions: {
     async fetchUserData() {
       try {
-        this.me = await $fetch('/api/users/me');
+        const { data } = await useFetch('/api/users/me');
+        if(data.value) {
+          this.me = data.value
+        }
       } catch (error) {
         console.error('Failed to fetch current user:', error);
       }

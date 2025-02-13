@@ -2,6 +2,7 @@
   <DashboardUsersCard 
     :title="'Users'" 
     :users="users"
+    :percent="12"
   ></DashboardUsersCard>
 </template>
 

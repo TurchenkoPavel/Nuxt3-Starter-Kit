@@ -8,7 +8,7 @@
           {{ users }}
         </span>
         <div class="text-green-500">
-          <span class="font-medium">+7%</span>
+          <span class="font-medium">+{{ percent }}%</span>
           <i class="pi pi-arrow-up text-xs ml-2"></i>
         </div>
       </div>
@@ -25,7 +25,8 @@
 <script setup>
 defineProps({
   title: String,
-  users: Number
+  users: Number,
+  percent: Number
 })
 
 </script>

@@ -1,7 +1,8 @@
 <template>
   <DashboardUsersCard 
-    :title="'Users'" 
+    :title="'Superadmins'" 
     :users="users"
+    :percent="7"
   ></DashboardUsersCard>
 </template>
 

@@ -10,5 +10,5 @@
       "src": "/(.*)",
       "dest": ".output/server/index.mjs"
     }
-  ],
+  ]
 }

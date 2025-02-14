@@ -80,5 +80,9 @@ export default defineNuxtConfig({
       }
       setMiddleware(pages)
     }
-  }
+  },
+  routeRules: {
+    // Use client-side rendering for this route
+    '/client-side-route-example': { ssr: false },
+  },
 })

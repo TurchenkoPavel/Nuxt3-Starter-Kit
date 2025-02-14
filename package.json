@@ -14,7 +14,8 @@
     "db:reset": "node scripts/reset.js",
     "db:revert": "node scripts/revert.js --step",
     "db:create": "node scripts/create.js --name",
-    "db:seeds": "node scripts/seeds.js "
+    "db:seeds": "node scripts/seeds.js ",
+    "vercel-build": "nuxt build && npm run db:migrate -- --with-seeds"
   },
   "dependencies": {
     "@nuxtjs/tailwindcss": "^6.12.2",

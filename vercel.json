@@ -11,7 +11,4 @@
       "dest": ".output/server/index.mjs"
     }
   ],
-  "scripts": {
-    "postdeploy": "npm run db:migrate -- --with-seeds"
-  }
 }

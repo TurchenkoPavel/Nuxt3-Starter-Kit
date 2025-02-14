@@ -72,13 +72,16 @@ const visible = useState('isSidebarVisible', () => false);
 const menuItems = {
     user: [
         { label: 'Dashboard', path: '/dashboard', icon: 'pi pi-home' },
+        { label: 'Sales', path: '/superadmin/sales', icon: 'pi pi-shop' },
     ],
     admin: [
         { label: 'Dashboard', path: '/admin/dashboard', icon: 'pi pi-home' },
+        { label: 'Sales', path: '/superadmin/sales', icon: 'pi pi-shop' },
         { label: 'User Management', path: '/admin/users', icon: 'pi pi-users' },
     ],
     superadmin: [
         { label: 'Dashboard', path: '/superadmin/dashboard', icon: 'pi pi-home' },
+        { label: 'Sales', path: '/superadmin/sales', icon: 'pi pi-shop' },
         { label: 'User Management', path: '/superadmin/users', icon: 'pi pi-users' },
     ],
 };

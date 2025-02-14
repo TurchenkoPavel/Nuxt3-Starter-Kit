@@ -5,7 +5,7 @@ export const up = (db) => {
       email TEXT NOT NULL UNIQUE,
       password TEXT NOT NULL,
       role TEXT NOT NULL, 
-      firstName TEXT NOT NULL,
+      firstName TEXT NOT NULL, 
       lastName TEXT NOT NULL,
       avatar TEXT NULLABLE,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,

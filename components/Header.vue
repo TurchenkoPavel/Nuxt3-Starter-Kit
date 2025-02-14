@@ -16,7 +16,7 @@
       external
     >
       <Avatar :image="avatarUrl" shape="circle" />
-        <span class="font-bold text-black">{{ usersStore.me?.firstName }} {{ usersStore.me?.lastName }}</span>
+      <span class="font-bold text-black">{{ usersStore.me?.firstName }} {{ usersStore.me?.lastName }}</span>
       </NuxtLink>
       
       <!-- Login Button -->

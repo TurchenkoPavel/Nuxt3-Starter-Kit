@@ -1,6 +1,6 @@
 <template>
   <div>
-    <DataTable :value="statuses" tableStyle="min-width: 50rem">
+    <DataTable :value="statuses" paginator :rows="5" :rowsPerPageOptions="[5, 10, 20, 50]" tableStyle="min-width: 50rem">
       <Column field="id" header="ID" />
       <Column field="name" header="Name" /> 
       <Column header="Edited by">
@@ -14,7 +14,7 @@
           </div>
         </template>
       </Column> 
-      <Column header="Actions">
+      <Column class="w-[100px]" header="Actions">
         <template #body="slotProps">
           <div class="flex gap-2">
             <Button 

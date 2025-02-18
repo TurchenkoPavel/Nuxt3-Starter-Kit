@@ -1,14 +1,12 @@
 <template>
-  <div class="flex justify-between items-center p-4 text-white bg-white shadow-md fixed w-full z-30	 top-0">
-    <div v-if="isLoggedIn" >
+  <div class="flex justify-center items-center p-4 text-white bg-white shadow-md fixed w-full z-30	 top-0">
+    <div v-if="isLoggedIn">
       <Button severity="contrast" icon="pi pi-bars" @click="isSidebarVisible = !isSidebarVisible" />
-      
     </div>
-    <div>
-      <!-- <img src="/logo.png" alt="Logo" class="logo" /> -->
+    <div class="ml-auto">
        <NuxtLink :to="'/'" class="font-bold text-black" external>LOGO</NuxtLink>
     </div>
-    <div class="flex flex-wrap place-content-center gap-3">
+    <div class="flex flex-wrap place-content-center gap-3 ml-auto">
     <NuxtLink 
       v-if="isLoggedIn" 
       to="/profile" 

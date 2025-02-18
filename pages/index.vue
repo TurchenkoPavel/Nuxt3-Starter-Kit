@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center items-center h-screen">
+  <div class="flex justify-center items-center h-[80vh]">
     <div>
       <!-- Main Heading -->
       <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">

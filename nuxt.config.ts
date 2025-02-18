@@ -41,7 +41,7 @@ export default defineNuxtConfig({
     },
     components: {
       include: ['Button', 'Form', 'InputText', 'Message', 'Toast', 'Card', 'Drawer', 'DataTable', 'Column', 'Password',
-        'Select', 'ConfirmPopup', 'FileUpload', 'Dialog'
+        'Select', 'ConfirmPopup', 'FileUpload', 'Dialog', 'Textarea', 'InputNumber'
       ]
     }
   },

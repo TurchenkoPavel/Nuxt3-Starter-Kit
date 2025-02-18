@@ -43,6 +43,7 @@ const createStatus = async() =>{
   if(result.success) {
     toast.add({ severity: 'success', summary: result.message, life: 3000 });
     createVisible.value = false;
+    name.name = '';
     statusesStore.fetchStatuses();
   } else {
     toast.add({ severity: 'error', summary: result.message, life: 3000 });

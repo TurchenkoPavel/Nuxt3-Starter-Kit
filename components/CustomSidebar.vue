@@ -73,15 +73,18 @@ const menuItems = {
   user: [
     { label: 'Dashboard', path: '/dashboard', icon: 'pi pi-home' },
     { label: 'Sales', path: '/sales', icon: 'pi pi-shop' },
+    { label: 'Products', path: '/superadmin/products', icon: 'pi-shopping-bag' },
   ],
   admin: [
     { label: 'Dashboard', path: '/admin/dashboard', icon: 'pi pi-home' },
     { label: 'Sales', path: '/admin/sales', icon: 'pi pi-shop' },
+    { label: 'Products', path: '/superadmin/products', icon: 'pi pi-shopping-bag' },
     { label: 'User Management', path: '/admin/users', icon: 'pi pi-users' },
   ],
   superadmin: [
     { label: 'Dashboard', path: '/superadmin/dashboard', icon: 'pi pi-home' },
     { label: 'Sales', path: '/superadmin/sales', icon: 'pi pi-shop' },
+    { label: 'Products', path: '/superadmin/products', icon: 'pi pi-shopping-bag' },
     { label: 'User Management', path: '/superadmin/users', icon: 'pi pi-users' },
   ],
 };
